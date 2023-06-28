@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 //changes done
-const NotesSchema = new mongoose.Schema({
+const FormSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "user",
@@ -43,7 +43,7 @@ const NotesSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Notes", NotesSchema);
+module.exports = mongoose.model("Form", FormSchema);
 
 // title
 // dateTime

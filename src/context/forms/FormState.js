@@ -1,17 +1,17 @@
 //error solved and updated
 
-import NoteContext from "./noteContext";
+import FormContext from "./formContext";
 import { useState } from "react";
 
-const NoteState = (props) => {
+const FormState = (props) => {
   const host = "http://localhost:5000";
 
-  const [notes, setNotes] = useState([]);
+  const [forms, setForms] = useState([]);
 
-  // Get all notes
-  const getNotes = async () => {
+  // Get all forms
+  const getForms = async () => {
     try {
-      const response = await fetch(`${host}/api/notes/fetchallnotes`, {
+      const response = await fetch(`${host}/api/forms/fetchallforms`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -19,17 +19,17 @@ const NoteState = (props) => {
         },
       });
       const json = await response.json();
-      setNotes(json);
+      setForms(json);
     } catch (err) {
       // console.error(err);
 
-      console.log("prblm occurred");
+      console.log("problem occurred in getForms");
     }
   };
 
-  // Add a note
+  // Add a form
 
-  const addNote = async (
+  const addForm = async (
     title,
     dateTime,
     location,
@@ -42,7 +42,7 @@ const NoteState = (props) => {
   ) => {
     try {
       // console.log("start", localStorage.getItem("token"));
-      const response = await fetch(`${host}/api/notes/addnote`, {
+      const response = await fetch(`${host}/api/forms/addform`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -65,23 +65,23 @@ const NoteState = (props) => {
       const responseText = await response.text();
 
       console.log("body rq", responseText);
-      setNotes([...notes, responseText]);
+      setForms([...forms, responseText]);
       if (response.ok) {
         location.reload();
       }
     } catch (err) {
       // console.error(err);
       console.log(err.message);
-      console.log("prblm occurred in addnote");
+      console.log("prblm occurred in addform");
     }
   };
 
   //DELETE
 
-  const deleteNote = async (id) => {
+  const deleteForm = async (id) => {
     try {
-      // console.log("delete note with id", id);
-      const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
+      // console.log("delete form with id", id);
+      const response = await fetch(`${host}/api/forms/deleteform/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -89,18 +89,18 @@ const NoteState = (props) => {
         },
       });
       const json = await response.json();
-      const updatedNotes = notes.filter((note) => {
-        return note._id !== id;
+      const updateForms = forms.filter((form) => {
+        return form._id !== id;
       });
       console.log("deleted", json);
-      setNotes(updatedNotes);
+      setForms(updateForms);
     } catch (err) {
       console.error(err);
     }
   };
 
-  // Edit a note
-  const editNote = async (
+  // Edit a form
+  const editForm = async (
     id,
     title,
     dateTime,
@@ -113,7 +113,7 @@ const NoteState = (props) => {
     image
   ) => {
     try {
-      const response = await fetch(`${host}/api/notes/updatenote/${id}`, {
+      const response = await fetch(`${host}/api/forms/updateform/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -131,11 +131,11 @@ const NoteState = (props) => {
           image,
         }),
       });
-      const updatedNote = await response.json();
-      const updatedNotes = notes.map((note) =>
-        note._id === id ? updatedNote : note
+      const updatedForm = await response.json();
+      const updatedForms = forms.map((form) =>
+        form._id === id ? updatedForm : form
       );
-      setNotes(updatedNotes);
+      setForms(updatedForms);
     } catch (err) {
       // console.error(err);
       console.log("prblm occurred");
@@ -143,12 +143,12 @@ const NoteState = (props) => {
   };
 
   return (
-    <NoteContext.Provider
-      value={{ notes, addNote, deleteNote, editNote, getNotes }}
+    <FormContext.Provider
+      value={{ forms, addForm, deleteForm, editForm, getForms }}
     >
       {props.children}
-    </NoteContext.Provider>
+    </FormContext.Provider>
   );
 };
 
-export default NoteState;
+export default FormState;

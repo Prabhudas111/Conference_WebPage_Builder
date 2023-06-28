@@ -2,24 +2,24 @@
 //changes done
 
 import React, { useContext, useEffect, useRef, useState } from "react";
-import noteContext from "../context/notes/noteContext";
-import NoteItem from "./NoteItem";
-import AddNote from "./AddNote";
+import formContext from "../context/forms/formContext";
+import FormItem from "./FormItem";
+import AddForm from "./AddForm";
 
-const Notes = (props) => {
-  const context = useContext(noteContext);
-  const { notes, getNotes, editNote } = context;
-  // console.log("notes", notes.type);
+const Forms = (props) => {
+  const context = useContext(formContext);
+  const { forms, getForms, editForm } = context;
+  // console.log("forms", forms.type);
 
   useEffect(() => {
-    getNotes();
+    getForms();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const ref = useRef(null);
   const refClose = useRef(null);
 
-  const [note, setNote] = useState({
+  const [form, setForm] = useState({
     id: "",
     etitle: "",
     edateTime: "",
@@ -32,47 +32,47 @@ const Notes = (props) => {
     eimage: "",
   });
 
-  const updateNote = (currentNote) => {
+  const updateForm = (currentForm) => {
     ref.current.click();
-    setNote({
-      id: currentNote._id,
-      etitle: currentNote.title,
-      edateTime: currentNote.dateTime,
-      elocation: currentNote.location,
-      edescription: currentNote.description,
-      espeakers: currentNote.speakers,
-      eregistrationInfo: currentNote.registrationInfo,
-      econtactInfo: currentNote.contactInfo,
-      eadditionalResources: currentNote.additionalResources,
-      eimage: currentNote.image,
+    setForm({
+      id: currentForm._id,
+      etitle: currentForm.title,
+      edateTime: currentForm.dateTime,
+      elocation: currentForm.location,
+      edescription: currentForm.description,
+      espeakers: currentForm.speakers,
+      eregistrationInfo: currentForm.registrationInfo,
+      econtactInfo: currentForm.contactInfo,
+      eadditionalResources: currentForm.additionalResources,
+      eimage: currentForm.image,
     });
   };
 
   const handleClick = () => {
-    editNote(
-      note.id,
-      note.etitle,
-      note.edateTime,
-      note.elocation,
-      note.edescription,
-      note.espeakers,
-      note.eregistrationInfo,
-      note.econtactInfo,
-      note.eadditionalResources,
-      note.eimage
+    editForm(
+      form.id,
+      form.etitle,
+      form.edateTime,
+      form.elocation,
+      form.edescription,
+      form.espeakers,
+      form.eregistrationInfo,
+      form.econtactInfo,
+      form.eadditionalResources,
+      form.eimage
     );
-    // console.log(notes);
+    // console.log(forms);
     refClose.current.click();
   };
 
   const onChange = (e) => {
-    setNote({ ...note, [e.target.name]: e.target.value });
-    // console.log(notes);
+    setForm({ ...form, [e.target.name]: e.target.value });
+    // console.log(forms);
   };
 
   return (
     <>
-      <AddNote showAlert={props.showAlert} />
+      <AddForm showAlert={props.showAlert} />
       <button
         ref={ref}
         type="button"
@@ -93,7 +93,7 @@ const Notes = (props) => {
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="exampleModalLabel">
-                Edit Note
+                Edit Form
               </h5>
               <button
                 type="button"
@@ -113,7 +113,7 @@ const Notes = (props) => {
                     className="form-control"
                     id="etitle"
                     name="etitle"
-                    value={note.etitle}
+                    value={form.etitle}
                     onChange={onChange}
                     minLength={5}
                     required
@@ -128,7 +128,7 @@ const Notes = (props) => {
                     className="form-control"
                     id="edateTime"
                     name="edateTime"
-                    value={note.edateTime}
+                    value={form.edateTime}
                     onChange={onChange}
                     required
                   />
@@ -142,7 +142,7 @@ const Notes = (props) => {
                     className="form-control"
                     id="elocation"
                     name="elocation"
-                    value={note.elocation}
+                    value={form.elocation}
                     onChange={onChange}
                   />
                 </div>
@@ -155,7 +155,7 @@ const Notes = (props) => {
                     className="form-control"
                     id="edescription"
                     name="edescription"
-                    value={note.edescription}
+                    value={form.edescription}
                     onChange={onChange}
                     minLength={5}
                     required
@@ -170,7 +170,7 @@ const Notes = (props) => {
                     className="form-control"
                     id="espeakers"
                     name="espeakers"
-                    value={note.espeakers}
+                    value={form.espeakers}
                     onChange={onChange}
                   />
                 </div>
@@ -182,7 +182,7 @@ const Notes = (props) => {
                     className="form-control"
                     id="eregistrationInfo"
                     name="eregistrationInfo"
-                    value={note.eregistrationInfo}
+                    value={form.eregistrationInfo}
                     onChange={onChange}
                   ></textarea>
                 </div>
@@ -194,7 +194,7 @@ const Notes = (props) => {
                     className="form-control"
                     id="econtactInfo"
                     name="econtactInfo"
-                    value={note.econtactInfo}
+                    value={form.econtactInfo}
                     onChange={onChange}
                   ></textarea>
                 </div>
@@ -206,7 +206,7 @@ const Notes = (props) => {
                     className="form-control"
                     id="eadditionalResources"
                     name="eadditionalResources"
-                    value={note.eadditionalResources}
+                    value={form.eadditionalResources}
                     onChange={onChange}
                   ></textarea>
                 </div>
@@ -219,7 +219,7 @@ const Notes = (props) => {
                     className="form-control"
                     id="eimage"
                     name="eimage"
-                    value={note.eimage}
+                    value={form.eimage}
                     onChange={onChange}
                   />
                 </div>
@@ -236,13 +236,13 @@ const Notes = (props) => {
               </button>
               <button
                 disabled={
-                  note.etitle.length < 5 || note.edescription.length < 5
+                  form.etitle.length < 5 || form.edescription.length < 5
                 }
                 onClick={handleClick}
                 type="button"
                 className="btn btn-primary"
               >
-                Update Note
+                Update Form
               </button>
             </div>
           </div>
@@ -254,14 +254,14 @@ const Notes = (props) => {
           <strong>My Meetings</strong>
         </div>
         <div className="container mx-2">
-          {notes.length === 0 && "No notes to display"}
+          {forms.length === 0 && "No forms to display"}
         </div>
-        {notes.map((note) => (
-          <NoteItem
+        {forms.map((form) => (
+          <FormItem
             showAlert={props.showAlert}
-            key={note._id}
-            updateNote={updateNote}
-            note={note}
+            key={form._id}
+            updateForm={updateForm}
+            form={form}
           />
         ))}
       </div>
@@ -269,4 +269,4 @@ const Notes = (props) => {
   );
 };
 
-export default Notes;
+export default Forms;

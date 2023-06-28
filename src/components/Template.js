@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import noteContext from "../context/notes/noteContext";
+import formContext from "../context/forms/formContext";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 const Template = (props) => {
-  const context = useContext(noteContext);
-  const { notes, getNotes } = context;
+  const context = useContext(formContext);
+  const { forms, getForms } = context;
   const [queries, setQueries] = useState({ question: "", answer: "" });
   let navigate = useNavigate();
 
@@ -41,33 +41,33 @@ const Template = (props) => {
   };
   const { id } = useParams();
   useEffect(() => {
-    getNotes();
+    getForms();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const filteredNote = notes.find((note) => note._id === id);
+  const filteredForm = forms.find((form) => form._id === id);
 
   return (
     <div className="container">
       <h3 className="mt-4 mb-4">This is the Template Page</h3>
-      {filteredNote && (
+      {filteredForm && (
         <div className="card">
           <div className="card-body">
-            <h2 className="card-title">{filteredNote.title}</h2>
-            <p className="card-text">Date and Time: {filteredNote.dateTime}</p>
-            <p className="card-text">Location: {filteredNote.location}</p>
-            <p className="card-text">Description: {filteredNote.description}</p>
-            <p className="card-text">Speakers: {filteredNote.speakers}</p>
+            <h2 className="card-title">{filteredForm.title}</h2>
+            <p className="card-text">Date and Time: {filteredForm.dateTime}</p>
+            <p className="card-text">Location: {filteredForm.location}</p>
+            <p className="card-text">Description: {filteredForm.description}</p>
+            <p className="card-text">Speakers: {filteredForm.speakers}</p>
             <p className="card-text">
-              Registration Info: {filteredNote.registrationInfo}
+              Registration Info: {filteredForm.registrationInfo}
             </p>
             <p className="card-text">
-              Contact Info: {filteredNote.contactInfo}
+              Contact Info: {filteredForm.contactInfo}
             </p>
             <p className="card-text">
-              Additional Resources: {filteredNote.additionalResources}
+              Additional Resources: {filteredForm.additionalResources}
             </p>
-            <img src={filteredNote.image} alt="Event" className="img-fluid" />
+            <img src={filteredForm.image} alt="Event" className="img-fluid" />
           </div>
         </div>
       )}

@@ -1,9 +1,9 @@
 import React from "react";
-import Notes from "./Notes";
+import Forms from "./Forms";
 const FormPage = (props) => {
   return (
     <div>
-      <Notes showAlert={props.showAlert} />
+      <Forms showAlert={props.showAlert} />
     </div>
   );
 };

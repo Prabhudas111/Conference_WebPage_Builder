@@ -4,7 +4,7 @@ import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import About from "./components/About";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import NoteState from "./context/notes/NoteState";
+import FormState from "./context/forms/FormState";
 import Alert from "./components/Alert";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
@@ -25,7 +25,7 @@ function App() {
     }, 1500);
   };
   return (
-    <NoteState>
+    <FormState>
       <Router>
         <NavBar />
         <Alert alert={alert} />
@@ -60,7 +60,7 @@ function App() {
           </Routes>
         </div>
       </Router>
-    </NoteState>
+    </FormState>
   );
 }
 

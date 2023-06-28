@@ -1,10 +1,10 @@
 import React, { useContext, useState } from "react";
-import noteContext from "../context/notes/noteContext";
+import formContext from "../context/forms/formContext";
 //changes done
 //props.showAlert
-const AddNote = (props) => {
-  const { addNote } = useContext(noteContext);
-  const [note, setNote] = useState({
+const AddForm = (props) => {
+  const { addForm } = useContext(formContext);
+  const [form, setForm] = useState({
     etitle: "",
     edateTime: "",
     elocation: "",
@@ -16,22 +16,22 @@ const AddNote = (props) => {
     eimage: "",
   });
 
-  const handleNote = (e) => {
+  const handleForm = (e) => {
     e.preventDefault();
-    // console.log("note", notes);
-    addNote({
-      title: note.etitle,
-      dateTime: note.edateTime,
-      location: note.elocation,
-      description: note.edescription,
-      speakers: note.espeakers,
-      registrationInfo: note.eregistrationInfo,
-      contactInfo: note.econtactInfo,
-      additionalResources: note.eadditionalResources,
-      image: note.eimage,
+
+    addForm({
+      title: form.etitle,
+      dateTime: form.edateTime,
+      location: form.elocation,
+      description: form.edescription,
+      speakers: form.espeakers,
+      registrationInfo: form.eregistrationInfo,
+      contactInfo: form.econtactInfo,
+      additionalResources: form.eadditionalResources,
+      image: form.eimage,
     });
 
-    setNote({
+    setForm({
       etitle: "",
       edateTime: "",
       elocation: "",
@@ -47,8 +47,8 @@ const AddNote = (props) => {
   };
 
   const onChange = (e) => {
-    setNote({
-      ...note,
+    setForm({
+      ...form,
       [e.target.name]: e.target.value,
     });
   };
@@ -67,13 +67,13 @@ const AddNote = (props) => {
             className="form-control"
             id="etitle"
             name="etitle"
-            value={note.etitle}
+            value={form.etitle}
             aria-describedby="emailHelp"
             onChange={onChange}
             required
           />
         </div>
-        
+
         <div className="mb-3 ">
           <label htmlFor="edateTime" className="form-label">
             Date
@@ -83,7 +83,7 @@ const AddNote = (props) => {
             className="form-control"
             id="edateTime"
             name="edateTime"
-            value={note.edateTime}
+            value={form.edateTime}
             onChange={onChange}
             required
           />
@@ -98,7 +98,7 @@ const AddNote = (props) => {
             className="form-control"
             id="elocation"
             name="elocation"
-            value={note.elocation}
+            value={form.elocation}
             onChange={onChange}
           />
         </div>
@@ -112,7 +112,7 @@ const AddNote = (props) => {
             className="form-control"
             id="edescription"
             name="edescription"
-            value={note.edescription}
+            value={form.edescription}
             onChange={onChange}
             required
           />
@@ -127,7 +127,7 @@ const AddNote = (props) => {
             className="form-control"
             id="espeakers"
             name="espeakers"
-            value={note.espeakers}
+            value={form.espeakers}
             onChange={onChange}
           />
         </div>
@@ -140,7 +140,7 @@ const AddNote = (props) => {
             className="form-control"
             id="eregistrationInfo"
             name="eregistrationInfo"
-            value={note.eregistrationInfo}
+            value={form.eregistrationInfo}
             onChange={onChange}
           ></textarea>
         </div>
@@ -153,7 +153,7 @@ const AddNote = (props) => {
             className="form-control"
             id="econtactInfo"
             name="econtactInfo"
-            value={note.econtactInfo}
+            value={form.econtactInfo}
             onChange={onChange}
           ></textarea>
         </div>
@@ -166,7 +166,7 @@ const AddNote = (props) => {
             className="form-control"
             id="eadditionalResources"
             name="eadditionalResources"
-            value={note.eadditionalResources}
+            value={form.eadditionalResources}
             onChange={onChange}
           ></textarea>
         </div>
@@ -180,16 +180,16 @@ const AddNote = (props) => {
             className="form-control"
             id="eimage"
             name="eimage"
-            value={note.eimage}
+            value={form.eimage}
             onChange={onChange}
           />
         </div>
 
         <button
-          onClick={handleNote}
+          onClick={handleForm}
           type="button"
           className="btn btn-primary"
-          // disabled={note.etitle.length < 5 || note.edescription.length < 5}
+          // disabled={form.etitle.length < 5 || form.edescription.length < 5}
         >
           Get Website
         </button>
@@ -198,4 +198,4 @@ const AddNote = (props) => {
   );
 };
 
-export default AddNote;
+export default AddForm;
