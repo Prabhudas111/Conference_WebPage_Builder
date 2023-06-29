@@ -25,7 +25,7 @@ export default function ShowQuery(props) {
                 </li>
               );
             } else {
-              return null; // or handle the case when answer is empty or meeting_id doesn't match
+              return null; 
             }
           })}
         </ul>

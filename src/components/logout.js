@@ -5,8 +5,7 @@ const logout = async () => {
       credentials: "include",
     });
 
-    // Perform any additional actions after logout
-    window.location.href = "/login"; // Redirect to the login page
+    window.location.href = "/login"; 
   } catch (error) {
     // Handle error
   }

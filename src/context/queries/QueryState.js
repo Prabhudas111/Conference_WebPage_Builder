@@ -1,6 +1,6 @@
 import { useState } from "react";
 import QueryContext from "./queryContext";
-
+//updated
 const QueryState = (props) => {
   const host = "http://localhost:5000";
 
@@ -77,7 +77,12 @@ const QueryState = (props) => {
           "Content-Type": "application/json",
           "auth-token": localStorage.getItem("token"),
         },
-        body: JSON.stringify(question, answer, meeting_id, meeting_title),
+        body: JSON.stringify({
+          question,
+          answer,
+          meeting_id,
+          meeting_title,
+        }),
       });
       const updatedQuery = await response.json();
       if (response.ok) {
@@ -92,6 +97,8 @@ const QueryState = (props) => {
       console.log("problem occurred in editQuery", err.message);
     }
   };
+
+
 
   return (
     <QueryContext.Provider

@@ -18,7 +18,7 @@ const AddQuery = (props) => {
 
     addQuery({
       question: equestion,
-      answer: "HELLO",
+      answer: "",
       meeting_id: props.id,
       meeting_title: props.title,
     });

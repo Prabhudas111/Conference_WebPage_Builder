@@ -1,18 +1,41 @@
+//inbox updated
+
 import React, { useState, useContext, useEffect } from "react";
 import QueryContext from "../context/queries/queryContext";
+import FormContext from "../context/forms/formContext";
 
-
-//updated 
 const Inbox = () => {
-  const context = useContext(QueryContext);
-  const { queries, getQueries, editQuery } = context;
+  const { queries, getQueries, editQuery, deleteQuery } =
+    useContext(QueryContext);
+  const { forms, getForms } = useContext(FormContext);
+
+  const [editedQueries, setEditedQueries] = useState({});
 
   useEffect(() => {
     getQueries();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    getForms();
   }, []);
 
-  const [editedQueries, setEditedQueries] = useState({});
+  useEffect(() => {
+    const updatedMeetings = queries.reduce((acc, query) => {
+      const { meeting_id } = query;
+      const form = forms.find((form) => form._id === meeting_id);
+      if (form) {
+        if (!acc[meeting_id]) {
+          acc[meeting_id] = {
+            meeting_id,
+            meeting_title: form.title,
+            queries: [],
+          };
+        }
+        acc[meeting_id].queries.push(query);
+      }
+      return acc;
+    }, {});
+    setMeetings(Object.values(updatedMeetings));
+  }, [queries, forms]);
+
+  const [meetings, setMeetings] = useState([]);
 
   const handleClick = async (queryId) => {
     const editedQuery = editedQueries[queryId];
@@ -23,13 +46,14 @@ const Inbox = () => {
       editedQuery.meeting_id,
       editedQuery.meeting_title
     );
+    console.log("query updated", editedQuery);
     setEditedQueries((prevQueries) => {
       const updatedQueries = { ...prevQueries };
       delete updatedQueries[queryId];
       return updatedQueries;
     });
   };
- 
+
   const handleCancelEdit = (queryId) => {
     setEditedQueries((prevQueries) => {
       const updatedQueries = { ...prevQueries };
@@ -57,20 +81,17 @@ const Inbox = () => {
     }));
   };
 
-  const meetings = Object.values(
-    queries.reduce((acc, query) => {
-      const { meeting_id, meeting_title } = query;
-      if (!acc[meeting_id]) {
-        acc[meeting_id] = {
-          meeting_id,
-          meeting_title,
-          queries: [],
-        };
-      }
-      acc[meeting_id].queries.push(query);
-      return acc;
-    }, {})
-  );
+  const handleDelete = async (queryId) => {
+    await deleteQuery(queryId);
+    // Update the meetings state by filtering out the deleted query
+    setMeetings((prevMeetings) => {
+      const updatedMeetings = prevMeetings.map((meeting) => ({
+        ...meeting,
+        queries: meeting.queries.filter((query) => query._id !== queryId),
+      }));
+      return updatedMeetings;
+    });
+  };
 
   return (
     <div className="container">
@@ -120,6 +141,12 @@ const Inbox = () => {
                       onClick={() => handleEdit(query._id)}
                     >
                       Edit
+                    </button>
+                    <button
+                      className="btn btn-danger ml-2 mx-4"
+                      onClick={() => handleDelete(query._id)}
+                    >
+                      Delete
                     </button>
                   </>
                 )}

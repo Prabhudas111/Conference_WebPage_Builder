@@ -14,12 +14,14 @@ const FormItem = (props) => {
             <h5 className="card-title">{form.title}</h5>
             <i
               className="fa-regular fa-trash-can mx-2"
+              style={{ cursor: "pointer" }}
               onClick={() => {
                 deleteForm(form._id);
                 props.showAlert("Deleted successfully", "success");
               }}
             ></i>
             <i
+              style={{ cursor: "pointer" }}
               className="fa-regular fa-pen-to-square mx-2"
               onClick={() => {
                 updateForm(form);
@@ -31,6 +33,7 @@ const FormItem = (props) => {
                 color: "black",
                 fontSize: "small",
                 textDecoration: "none",
+                cursor: "pointer",
               }}
             >
               Get Details
