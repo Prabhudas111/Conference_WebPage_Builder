@@ -1,6 +1,8 @@
 import React, { useState, useContext, useEffect } from "react";
 import QueryContext from "../context/queries/queryContext";
 
+
+//updated 
 const Inbox = () => {
   const context = useContext(QueryContext);
   const { queries, getQueries, editQuery } = context;

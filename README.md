@@ -69,5 +69,22 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-pp@gmail.com
-pppppp
+
+### Required packages .... 
+
+### frontend -- (in main Folder)
+-->  npx create-react-app conference //no need to recreate app
+-->  npm install concurrently
+
+### In backend folder
+-->  npm init
+-->  npm i express
+-->  npm i -D nodemon
+-->  npm install cors
+-->  npm install express-validator
+-->  npm install bcryptjs
+-->  npm install jsonwebtoken
+
+
+### To run both frontend and backend together 
+-->  npm run both
