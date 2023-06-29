@@ -122,4 +122,11 @@ router.get("/getuser", fetchuser, async (req, res) => {
     res.status(500).send("Internal Server Error");
   }
 });
+
+// Logout route
+router.get("/logout", (req, res) => {
+  // Clear the JWT token from the client-side
+  res.clearCookie("authToken");
+  res.json({ message: "Logout successful" });
+});
 module.exports = router;

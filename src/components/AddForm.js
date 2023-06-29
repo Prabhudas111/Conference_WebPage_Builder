@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import formContext from "../context/forms/formContext";
-//changes done
-//props.showAlert
+
 const AddForm = (props) => {
   const { addForm } = useContext(formContext);
   const [form, setForm] = useState({

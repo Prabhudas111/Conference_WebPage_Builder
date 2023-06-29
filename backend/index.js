@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/forms", require("./routes/forms"));
-// app.use("/api/query", require("./routes/query"));
+app.use("/api/queries", require("./routes/queries"));
 
 app.listen(port, () => {
   console.log(

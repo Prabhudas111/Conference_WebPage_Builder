@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-//changes done
+
 const NavBar = () => {
   let navigate = useNavigate();
   const location = useLocation();
@@ -22,6 +22,24 @@ const NavBar = () => {
             to="/formpage"
           >
             Meetings
+          </Link>
+        </li>
+      );
+    }
+    return null;
+  };
+
+  const renderQueryButton = () => {
+    if (localStorage.getItem("token")) {
+      return (
+        <li className="nav-item">
+          <Link
+            className={`nav-link ${
+              location.pathname === "/inbox" ? "active" : ""
+            }`}
+            to="/inbox"
+          >
+            Inbox
           </Link>
         </li>
       );
@@ -70,6 +88,7 @@ const NavBar = () => {
               </Link>
             </li>
             {renderMeetingsButton()}
+            {renderQueryButton()}
           </ul>
           {!localStorage.getItem("token") ? (
             <form className="d-flex" role="search">
