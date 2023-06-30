@@ -1,9 +1,9 @@
 import React, { useContext, useEffect } from "react";
-import formContext from "../context/forms/formContext";
+import formContext from "../../context/forms/formContext";
 import { useParams } from "react-router-dom";
 
-import AddQuery from "./AddQuery";
-import ShowQuery from "./ShowQuery";
+import AddQuery from "../QueryDetails/AddQuery";
+import ShowQuery from "../QueryDetails/ShowQuery";
 
 const Template = (props) => {
   const context = useContext(formContext);

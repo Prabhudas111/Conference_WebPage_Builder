@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from "react";
-import QueryContext from "../context/queries/queryContext";
+import QueryContext from "../../context/queries/queryContext";
 
 export default function ShowQuery(props) {
   const context = useContext(QueryContext);
@@ -25,7 +25,7 @@ export default function ShowQuery(props) {
                 </li>
               );
             } else {
-              return null; 
+              return null;
             }
           })}
         </ul>

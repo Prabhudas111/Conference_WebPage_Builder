@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import queryContext from "../context/queries/queryContext";
+import queryContext from "../../context/queries/queryContext";
 
 const AddQuery = (props) => {
   const { addQuery } = useContext(queryContext);

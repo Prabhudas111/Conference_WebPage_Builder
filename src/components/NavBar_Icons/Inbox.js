@@ -1,9 +1,8 @@
 //inbox updated
 
 import React, { useState, useContext, useEffect } from "react";
-import QueryContext from "../context/queries/queryContext";
-import FormContext from "../context/forms/formContext";
-
+import QueryContext from "../../context/queries/queryContext";
+import FormContext from "../../context/forms/formContext";
 const Inbox = () => {
   const { queries, getQueries, editQuery, deleteQuery } =
     useContext(QueryContext);

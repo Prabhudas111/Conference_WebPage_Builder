@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-import NavBar from "./components/NavBar";
-import About from "./components/About";
+import Home from "./components/NavBar_Icons/Home";
+
+import NavBar from "./components/NavBar_Icons/NavBar";
+import About from "./components/NavBar_Icons/About";
 import FormState from "./context/forms/FormState";
 import Alert from "./components/Alert";
-import Login from "./components/Login";
-import Signup from "./components/Signup";
-import FormPage from "./components/FormPage";
-import Template from "./components/Template";
-import Inbox from "./components/Inbox";
+import Login from "./components/UserDetails/Login";
+import Signup from "./components/UserDetails/Signup";
+import FormPage from "./components/FormDetails/FormPage";
+import Template from "./components/CustomTemplates/Template";
+import Inbox from "./components/NavBar_Icons/Inbox";
 import QueryState from "./context/queries/QueryState";
 function App() {
   const [alert, setAlert] = useState(null);
