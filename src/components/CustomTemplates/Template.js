@@ -27,7 +27,7 @@ const Template = (props) => {
 
   return (
     <div className="container">
-      <h3 className="mt-4 mb-4">This is the Template Page</h3>
+      {/* <h3 className="mt-4 mb-4">This is the Template Page</h3>
       <div className="card">
         <div className="card-body">
           <h2 className="card-title">{filteredForm.title}</h2>
@@ -44,7 +44,7 @@ const Template = (props) => {
           </p>
           <img src={filteredForm.image} alt="Event" className="img-fluid" />
         </div>
-      </div>
+      </div> */}
       {/* <QueryService
         showAlert={props.showAlert}
         id={id}

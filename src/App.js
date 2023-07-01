@@ -12,6 +12,7 @@ import FormPage from "./components/FormDetails/FormPage";
 import Template from "./components/CustomTemplates/Template";
 import Inbox from "./components/NavBar_Icons/Inbox";
 import QueryState from "./context/queries/QueryState";
+// import Homepage from "./components/NavBar_Icons/HomePage/Homepage";
 function App() {
   const [alert, setAlert] = useState(null);
 
@@ -29,12 +30,11 @@ function App() {
 
   return (
     <QueryState>
-    <FormState>
-      <Router>
-        <NavBar />
-        <Alert alert={alert} />
-        <div className="container">
-          <Routes>
+      <FormState>
+        <Router>
+          <NavBar />
+          <Alert alert={alert} />
+          <Routes className="container">
             <Route exact path="/" element={<Home />} />
             <Route
               exact
@@ -71,11 +71,29 @@ function App() {
               element={<Inbox showAlert={showAlert} />}
             />
           </Routes>
-        </div>
-      </Router>
-    </FormState>
+        </Router>
+      </FormState>
     </QueryState>
   );
 }
 
 export default App;
+
+{
+  /* <Router>
+<NavBar />
+<Alert alert={alert} />
+<div className="container mx-auto">
+  <Routes>
+    <Route exact path="/" element={<Home />} />
+    <Route exact path="/about" element={<About showAlert={showAlert} />} />
+    <Route exact path="/formpage" element={<FormPage showAlert={showAlert} />} />
+    <Route exact path="/login" element={<Login showAlert={showAlert} />} />
+    <Route exact path="/signup" element={<Signup showAlert={showAlert} />} />
+    <Route exact path="/formpage/template/:id" element={<Template showAlert={showAlert} />} />
+    <Route path="/template/:id" element={<Template showAlert={showAlert} />} />
+    <Route exact path="/inbox" element={<Inbox showAlert={showAlert} />} />
+  </Routes>
+</div>
+</Router> */
+}

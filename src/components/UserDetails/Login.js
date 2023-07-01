@@ -1,79 +1,57 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import Signup from "./Signup";
+import LoginItem from "./LoginItem";
+import "./Login.css";
+import NavBar from "../NavBar_Icons/NavBar";
 
 const Login = (props) => {
-  const [credentials, setCredentials] = useState({ email: "", password: "" });
-  let navigate = useNavigate();
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const response = await fetch("http://localhost:5000/api/auth/login", {
-      method: "POST", // *GET, POST, PUT, DELETE, etc.
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: credentials.email,
-        password: credentials.password,
-      }),
-    });
+  const [isSignUpActive, setIsSignUpActive] = useState(false);
 
-    const json = await response.json();
-    console.log(json);
-
-    if (json.success) {
-      //save the authToken
-      localStorage.setItem("token", json.authToken);
-      props.showAlert("logged in successfully", "success");
-      navigate("/formpage");
-      //redirect
-    } else {
-      props.showAlert("Invalid credentials", "danger");
-    }
+  const handleSignUpClick = () => {
+    setIsSignUpActive(true);
   };
 
-  const onChange = (val) => {
-    setCredentials({ ...credentials, [val.target.name]: val.target.value });
+  const handleSignInClick = () => {
+    setIsSignUpActive(false);
   };
+
   return (
-    <div className="mt-3">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            Email address
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            id="email"
-            name="email"
-            value={credentials.email}
-            aria-describedby="emailHelp"
-            onChange={onChange}
-          />
-          <div id="emailHelp" className="form-text">
-            We'll never share your email with anyone else.
+    <>
+      {/* <NavBar /> */}
+      <div
+        className={`container ${
+          isSignUpActive ? "right-panel-active" : ""
+        } full-page`}
+        id="container"
+      >
+        <div className="form-container sign-in-container">
+          <LoginItem showAlert={props.showAlert} />
+        </div>
+        <div className="form-container sign-up-container">
+          <Signup showAlert={props.showAlert} />
+        </div>
+        <div className="overlay-container">
+          <div className="overlay">
+            <div className="overlay-panel overlay-left">
+              <h1>Welcome Back!</h1>
+              <p>
+                To keep connected with us please login with your personal info
+              </p>
+              <button className="ghost" id="signIn" onClick={handleSignInClick}>
+                Login In
+              </button>
+            </div>
+            <div className="overlay-panel overlay-right">
+              <h1>Hello, Friend!</h1>
+              <p>Enter your personal details and start journey with us</p>
+              <button className="ghost" id="signUp" onClick={handleSignUpClick}>
+                Sign Up
+              </button>
+            </div>
           </div>
         </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
-          <input
-            type="password"
-            name="password"
-            value={credentials.password}
-            className="form-control"
-            id="exampleInputPassword1"
-            onChange={onChange}
-          />
-        </div>
-
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
-    </div>
+      </div>
+    </>
   );
 };
 

@@ -1,6 +1,6 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./style.css";
 
 const Signup = (props) => {
   const [credentials, setCredentials] = useState({
@@ -51,73 +51,54 @@ const Signup = (props) => {
   };
 
   return (
-    <div className="container mt-2">
-      <h2 className="my-3">Create an account</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="my-3">
-          <label htmlFor="name" className="form-label">
-            Name
-          </label>
-          <input
-            type="text"
-            className="form-control"
-            id="name"
-            name="name"
-            aria-describedby="emailHelp"
-            onChange={onChange}
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            Email address
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            id="email"
-            name="email"
-            aria-describedby="emailHelp"
-            onChange={onChange}
-          />
+    <form onSubmit={handleSubmit} className="mx-auto max-w-sm">
+      <h1 className="font-bold my-3 text-3xl ">Create Account</h1>
 
-          <div id="emailHelp" className="form-text">
-            We'll never share your email with anyone else.
-          </div>
-        </div>
-        <div className="mb-3">
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            id="password"
-            name="password"
-            onChange={onChange}
-            minLength={5}
-            required
-          />
-        </div>
-        <div className="mb-3">
-          <label htmlFor="cpassword" className="form-label">
-            Confirm Password
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            id="cpassword"
-            name="cpassword"
-            onChange={onChange}
-            minLength={5}
-            required
-          />
-        </div>
-
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
-    </div>
+      <input
+        type="text"
+        placeholder="Name"
+        className="border border-gray-300 px-3 py-2 rounded-md w-full mb-3"
+        id="name"
+        name="name"
+        onChange={onChange}
+        aria-describedby="emailHelp"
+      />
+      <input
+        type="email"
+        placeholder="Email"
+        className="border border-gray-300 px-3 py-2 rounded-md w-full mb-3"
+        id="email"
+        name="email"
+        aria-describedby="emailHelp"
+        onChange={onChange}
+      />
+      <input
+        type="password"
+        className="border border-gray-300 px-3 py-2 rounded-md w-full mb-3"
+        id="password"
+        name="password"
+        onChange={onChange}
+        minLength={5}
+        required
+        placeholder="Password"
+      />
+      <input
+        type="password"
+        className="border border-gray-300 px-3 py-2 rounded-md w-full mb-3"
+        id="cpassword"
+        name="cpassword"
+        onChange={onChange}
+        minLength={5}
+        required
+        placeholder="Confirm Password"
+      />
+      <button
+        type="submit"
+        className="bg-[#FF4455] text-white px-4 py-2 rounded-md my-3"
+      >
+        Sign Up
+      </button>
+    </form>
   );
 };
 

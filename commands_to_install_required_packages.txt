@@ -4,6 +4,8 @@
 ### frontend -- (in main Folder)
 -->  npx create-react-app conference //no need to recreate app
 -->  npm install concurrently
+-->  npm install @mui/icons-material
+
 
 ### In backend folder
 -->  npm init
