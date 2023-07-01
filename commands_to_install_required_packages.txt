@@ -17,5 +17,8 @@
 -->  npm install jsonwebtoken
 
 
+-->  npm init && npm i express && npm i -D nodemon && npm install cors && npm install express-validator && npm install bcryptjs && npm install jsonwebtoken
+
+
 ### To run both frontend and backend together 
 -->  npm run both
