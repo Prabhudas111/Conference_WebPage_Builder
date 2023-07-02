@@ -79,21 +79,3 @@ function App() {
 
 export default App;
 
-{
-  /* <Router>
-<NavBar />
-<Alert alert={alert} />
-<div className="container mx-auto">
-  <Routes>
-    <Route exact path="/" element={<Home />} />
-    <Route exact path="/about" element={<About showAlert={showAlert} />} />
-    <Route exact path="/formpage" element={<FormPage showAlert={showAlert} />} />
-    <Route exact path="/login" element={<Login showAlert={showAlert} />} />
-    <Route exact path="/signup" element={<Signup showAlert={showAlert} />} />
-    <Route exact path="/formpage/template/:id" element={<Template showAlert={showAlert} />} />
-    <Route path="/template/:id" element={<Template showAlert={showAlert} />} />
-    <Route exact path="/inbox" element={<Inbox showAlert={showAlert} />} />
-  </Routes>
-</div>
-</Router> */
-}

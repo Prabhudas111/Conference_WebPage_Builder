@@ -93,27 +93,40 @@ const Inbox = () => {
   };
 
   return (
-    <div className="container">
-      <h3 className="mt-4 mb-4">Meetings</h3>
+    <div className="container mt-2 bg-gradient-to-br from-blue-800 to-cyan-400">
+      <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-100 via-white-200 to-blue-100  mt-16 text-center pb-3">
+        Meetings
+      </h1>
+
       {meetings.map((meeting) => (
-        <div key={meeting.meeting_id} className="card mb-4">
-          <div className="card-header">
-            <h4 className="card-title">{meeting.meeting_title}</h4>
+        <div
+          key={meeting.meeting_id}
+          className="card mb-4 grid grid-cols-1 min-w-90 "
+          style={{ width: "90%" }}
+        >
+          <div className="card-header bg-orange-500  p-4">
+            <h4 className="card-title text-white text-xl font-bold">
+              {meeting.meeting_title}
+            </h4>
           </div>
-          <div className="card-body">
+
+          <div className="card-body ">
             {meeting.queries.map((query) => (
-              <div key={query._id} className="mb-3">
+              <div
+                key={query._id}
+                className="mb-3 p-4 border border-gray-300 rounded-lg"
+              >
                 {editedQueries[query._id] ? (
                   <>
                     <input
                       type="text"
-                      className="form-control mb-2"
+                      className="w-full py-2 px-3 border border-gray-300 rounded-lg mb-2 focus:outline-none focus:border-blue-500"
                       name="question"
                       value={editedQueries[query._id].question}
                       onChange={(e) => onChange(e, query._id)}
                     />
                     <input
-                      className="form-control mb-2"
+                      className="w-full py-2 px-3 border border-gray-300 rounded-lg mb-2 focus:outline-none focus:border-blue-500"
                       name="answer"
                       value={editedQueries[query._id].answer}
                       onChange={(e) => onChange(e, query._id)}
@@ -136,7 +149,7 @@ const Inbox = () => {
                     <h5>Question: {query.question}</h5>
                     <p>Answer: {query.answer}</p>
                     <button
-                      className="btn btn-info"
+                      className="btn btn-info btn btn-primary bg-blue-800 hover:bg-blue-700 text-white"
                       onClick={() => handleEdit(query._id)}
                     >
                       Edit

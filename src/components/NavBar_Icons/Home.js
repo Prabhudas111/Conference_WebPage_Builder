@@ -9,7 +9,7 @@ const Home = () => {
 
       <div class="h-screen">
         <div class="flex flex-col justify-center my-16">
-          <h1 class="text-center font-bold text-6xl md:text-8xl">
+          <h1 class="text-center font-bold text-6xl md:text-8xl pt-20">
             CONFERENCE WEBSITE
           </h1>
           <h1 class="text-center text-6xl md:text-8xl font-bold mt-5 md:m-5 text-blue-700">
@@ -23,7 +23,7 @@ const Home = () => {
           <ScrollToBottomButton />
         </div>
       </div>
-     
+
       <div class=" block bg-white shadow-lg rounded-lg overflow-hidden flex items-center justify-center py-3 px-3 ">
         <div class="px-4">
           <img
@@ -63,8 +63,6 @@ const Home = () => {
           </div>
         </div>
 
-      
-
         <div class="px-4 ">
           <img
             class=" object-cover object-center h-600"
@@ -78,7 +76,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      
+
       <section class="bg-white">
         <div class="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
           <nav class="flex flex-wrap justify-center -mx-5 -my-2">

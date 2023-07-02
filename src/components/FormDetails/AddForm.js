@@ -53,17 +53,26 @@ const AddForm = (props) => {
   };
 
   return (
-    <div className="container my-3">
-      <h1>Add a Meeting</h1>
+    <div className="mx-5 px-3 py-9 ">
+      <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-100 via-blue-200 to-blue-400 mt-16 text-center pb-3">
+        Create New Meeting
+      </h1>
 
-      <form className="my-3">
-        <div className="mb-3">
-          <label htmlFor="etitle" className="form-label">
+      <form
+        className="my-3 pt-10 p-4 rounded-lg"
+        style={{ width: "50%", margin: "0 auto" }}
+      >
+        <div className="w-100 flex flex-col items-start">
+          <label
+            htmlFor="etitle"
+            className="mb-2"
+            style={{ color: "black", fontWeight: "bold" }}
+          >
             Title
           </label>
           <input
             type="text"
-            className="form-control"
+            className="form-input w-full border border-gray-300 rounded-lg py-2 px-3 transition-colors duration-300 focus:outline-none focus:border-blue-500 hover:border-blue-400"
             id="etitle"
             name="etitle"
             value={form.etitle}
@@ -73,13 +82,17 @@ const AddForm = (props) => {
           />
         </div>
 
-        <div className="mb-3 ">
-          <label htmlFor="edateTime" className="form-label">
+        <div className="w-100 flex flex-col items-start">
+          <label
+            htmlFor="edateTime"
+            className="block mb-1 "
+            style={{ color: "black", fontWeight: "bold" }}
+          >
             Date
           </label>
           <input
             type="text"
-            className="form-control"
+            className="form-input w-full border border-gray-300 rounded-lg py-2 px-3 transition-colors duration-300 focus:outline-none focus:border-blue-500 hover:border-blue-400"
             id="edateTime"
             name="edateTime"
             value={form.edateTime}
@@ -88,13 +101,17 @@ const AddForm = (props) => {
           />
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="elocation" className="form-label">
+        <div className="w-100 flex flex-col items-start">
+          <label
+            htmlFor="elocation"
+            className="block mb-1"
+            style={{ color: "black", fontWeight: "bold" }}
+          >
             Location
           </label>
           <input
             type="text"
-            className="form-control"
+            className="form-input w-full border border-gray-300 rounded-lg py-2 px-3 transition-colors duration-300 focus:outline-none focus:border-blue-500 hover:border-blue-400"
             id="elocation"
             name="elocation"
             value={form.elocation}
@@ -102,13 +119,17 @@ const AddForm = (props) => {
           />
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="edescription" className="form-label">
+        <div className="w-100 flex flex-col items-start">
+          <label
+            htmlFor="edescription"
+            className="block mb-1 "
+            style={{ color: "black", fontWeight: "bold" }}
+          >
             Description
           </label>
           <input
             type="text"
-            className="form-control"
+            className="form-input w-full border border-gray-300 rounded-lg py-2 px-3 transition-colors duration-300 focus:outline-none focus:border-blue-500 hover:border-blue-400"
             id="edescription"
             name="edescription"
             value={form.edescription}
@@ -117,13 +138,17 @@ const AddForm = (props) => {
           />
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="espeakers" className="form-label">
+        <div className="w-100 flex flex-col items-start">
+          <label
+            htmlFor="espeakers"
+            className="block mb-1"
+            style={{ color: "black", fontWeight: "bold" }}
+          >
             Speakers
           </label>
           <input
             type="text"
-            className="form-control"
+            className="form-input w-full border border-gray-300 rounded-lg py-2 px-3 transition-colors duration-300 focus:outline-none focus:border-blue-500 hover:border-blue-400"
             id="espeakers"
             name="espeakers"
             value={form.espeakers}
@@ -131,52 +156,68 @@ const AddForm = (props) => {
           />
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="eregistrationInfo" className="form-label">
+        <div className="w-100 flex flex-col items-start">
+          <label
+            htmlFor="eregistrationInfo"
+            className="block mb-1 "
+            style={{ color: "black", fontWeight: "bold" }}
+          >
             Registration Info
           </label>
-          <textarea
-            className="form-control"
+          <input
+            className="form-input w-full border border-gray-300 rounded-lg py-2 px-3 transition-colors duration-300 focus:outline-none focus:border-blue-500 hover:border-blue-400"
             id="eregistrationInfo"
             name="eregistrationInfo"
             value={form.eregistrationInfo}
             onChange={onChange}
-          ></textarea>
+          ></input>
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="econtactInfo" className="form-label">
+        <div className="w-100 flex flex-col items-start">
+          <label
+            htmlFor="econtactInfo"
+            className="block mb-1 "
+            style={{ color: "black", fontWeight: "bold" }}
+          >
             Contact Info
           </label>
-          <textarea
-            className="form-control"
+          <input
+            className="form-input w-full border border-gray-300 rounded-lg py-2 px-3 transition-colors duration-300 focus:outline-none focus:border-blue-500 hover:border-blue-400"
             id="econtactInfo"
             name="econtactInfo"
             value={form.econtactInfo}
             onChange={onChange}
-          ></textarea>
+          ></input>
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="eadditionalResources" className="form-label">
+        <div className="w-100 flex flex-col items-start">
+          <label
+            htmlFor="eadditionalResources"
+            className="block mb-1 "
+            style={{ color: "black", fontWeight: "bold" }}
+          >
             Additional Info
           </label>
-          <textarea
-            className="form-control"
+          <input
+            className="form-input w-full border border-gray-300 rounded-lg py-2 px-3 transition-colors duration-300 focus:outline-none focus:border-blue-500 hover:border-blue-400"
             id="eadditionalResources"
             name="eadditionalResources"
             value={form.eadditionalResources}
             onChange={onChange}
-          ></textarea>
+          ></input>
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="eimage" className="form-label">
+        <div className="w-100 flex flex-col items-start">
+          <label
+            htmlFor="eimage"
+            className="block mb-1 "
+            style={{ color: "black", fontWeight: "bold" }}
+          >
             Image Link
           </label>
           <input
             type="text"
-            className="form-control"
+            className="form-input w-full border border-gray-300 rounded-lg py-2 px-3 transition-colors duration-300 focus:outline-none focus:border-blue-500 hover:border-blue-400"
             id="eimage"
             name="eimage"
             value={form.eimage}
@@ -187,7 +228,7 @@ const AddForm = (props) => {
         <button
           onClick={handleForm}
           type="button"
-          className="btn btn-primary"
+          className="btn text-white bg-gradient-to-br from-blue-800 to-cyan-400 mt-4 p-3"
           // disabled={form.etitle.length < 5 || form.edescription.length < 5}
         >
           Get Website

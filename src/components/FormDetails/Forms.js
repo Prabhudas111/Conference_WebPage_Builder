@@ -71,16 +71,17 @@ const Forms = (props) => {
   };
 
   return (
-    <>
+    // <div className="bg-gradient-to-b from-orange-500 via-white to-orange-500">
+    <div className="  bg-gradient-to-br from-blue-800 to-cyan-400">
       <AddForm showAlert={props.showAlert} />
       <button
         ref={ref}
         type="button"
-        className="btn btn-primary d-none"
+        className="invisible sr-only"
         data-bs-toggle="modal"
         data-bs-target="#exampleModal"
       >
-        Launch demo modal
+        {" "}
       </button>
       <div
         className="modal fade"
@@ -89,10 +90,10 @@ const Forms = (props) => {
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div className="modal-dialog">
-          <div className="modal-content">
+        <div className="modal-dialog" style={{ marginTop: "90px" }}>
+          <div className="modal-content bg-gradient-to-br from-blue-800 to-cyan-400">
             <div className="modal-header">
-              <h5 className="modal-title" id="exampleModalLabel">
+              <h5 className="modal-title text-white" id="exampleModalLabel">
                 Edit Form
               </h5>
               <button
@@ -102,129 +103,132 @@ const Forms = (props) => {
                 aria-label="Close"
               ></button>
             </div>
-            <div className="modal-body">
-              <form className="my-3">
-                <div className="mb-3">
-                  <label htmlFor="etitle" className="form-label">
-                    Title
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="etitle"
-                    name="etitle"
-                    value={form.etitle}
-                    onChange={onChange}
-                    minLength={5}
-                    required
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="edateTime" className="form-label">
-                    Date and Time
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="edateTime"
-                    name="edateTime"
-                    value={form.edateTime}
-                    onChange={onChange}
-                    required
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="elocation" className="form-label">
-                    Location
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="elocation"
-                    name="elocation"
-                    value={form.elocation}
-                    onChange={onChange}
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="edescription" className="form-label">
-                    Description
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="edescription"
-                    name="edescription"
-                    value={form.edescription}
-                    onChange={onChange}
-                    minLength={5}
-                    required
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="espeakers" className="form-label">
-                    Speakers
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="espeakers"
-                    name="espeakers"
-                    value={form.espeakers}
-                    onChange={onChange}
-                  />
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="eregistrationInfo" className="form-label">
-                    Registration Info
-                  </label>
-                  <textarea
-                    className="form-control"
-                    id="eregistrationInfo"
-                    name="eregistrationInfo"
-                    value={form.eregistrationInfo}
-                    onChange={onChange}
-                  ></textarea>
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="econtactInfo" className="form-label">
-                    Contact Info
-                  </label>
-                  <textarea
-                    className="form-control"
-                    id="econtactInfo"
-                    name="econtactInfo"
-                    value={form.econtactInfo}
-                    onChange={onChange}
-                  ></textarea>
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="eadditionalResources" className="form-label">
-                    Additional Resources
-                  </label>
-                  <textarea
-                    className="form-control"
-                    id="eadditionalResources"
-                    name="eadditionalResources"
-                    value={form.eadditionalResources}
-                    onChange={onChange}
-                  ></textarea>
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="eimage" className="form-label">
-                    Image Link
-                  </label>
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="eimage"
-                    name="eimage"
-                    value={form.eimage}
-                    onChange={onChange}
-                  />
-                </div>
-              </form>
-            </div>
+
+            <form
+              className="my-3 mt-3"
+              style={{ width: "90%", margin: "0 auto" }}
+            >
+              <div className="w-full text-left ">
+                <label htmlFor="etitle" className="mb-1 mt-2">
+                  Title
+                </label>
+                <input
+                  type="text"
+                  className="form-input w-full border border-gray-300 rounded-lg py-2 px-3 transition-colors duration-300 focus:outline-none focus:border-blue-500 hover:border-blue-400"
+                  id="etitle"
+                  name="etitle"
+                  value={form.etitle}
+                  onChange={onChange}
+                  minLength={5}
+                  required
+                />
+              </div>
+              <div className="w-full text-left  m-3">
+                <label htmlFor="edateTime" className="mb-1 mt-2">
+                  Date and Time
+                </label>
+                <input
+                  type="text"
+                  className="form-input w-full border border-gray-300 rounded-lg py-2 px-3 transition-colors duration-300 focus:outline-none focus:border-blue-500 hover:border-blue-400"
+                  id="edateTime"
+                  name="edateTime"
+                  value={form.edateTime}
+                  onChange={onChange}
+                  required
+                />
+              </div>
+              <div className="w-full text-left  m-3">
+                <label htmlFor="elocation" className="mb-1 mt-2">
+                  Location
+                </label>
+                <input
+                  type="text"
+                  className="form-input w-full border border-gray-300 rounded-lg py-2 px-3 transition-colors duration-300 focus:outline-none focus:border-blue-500 hover:border-blue-400"
+                  id="elocation"
+                  name="elocation"
+                  value={form.elocation}
+                  onChange={onChange}
+                />
+              </div>
+              <div className="w-full text-left  m-3">
+                <label htmlFor="edescription" className="mb-1 mt-2">
+                  Description
+                </label>
+                <input
+                  type="text"
+                  className="form-input w-full border border-gray-300 rounded-lg py-2 px-3 transition-colors duration-300 focus:outline-none focus:border-blue-500 hover:border-blue-400"
+                  id="edescription"
+                  name="edescription"
+                  value={form.edescription}
+                  onChange={onChange}
+                  minLength={5}
+                  required
+                />
+              </div>
+              <div className="w-full text-left  m-3">
+                <label htmlFor="espeakers" className="mb-1 mt-2">
+                  Speakers
+                </label>
+                <input
+                  type="text"
+                  className="form-input w-full border border-gray-300 rounded-lg py-2 px-3 transition-colors duration-300 focus:outline-none focus:border-blue-500 hover:border-blue-400"
+                  id="espeakers"
+                  name="espeakers"
+                  value={form.espeakers}
+                  onChange={onChange}
+                />
+              </div>
+              <div className="w-full text-left  m-3">
+                <label htmlFor="eregistrationInfo" className="mb-1 mt-2">
+                  Registration Info
+                </label>
+                <input
+                  className="form-input w-full border border-gray-300 rounded-lg py-2 px-3 transition-colors duration-300 focus:outline-none focus:border-blue-500 hover:border-blue-400"
+                  id="eregistrationInfo"
+                  name="eregistrationInfo"
+                  value={form.eregistrationInfo}
+                  onChange={onChange}
+                ></input>
+              </div>
+              <div className="w-full text-left  m-3">
+                <label htmlFor="econtactInfo" className="mb-1 mt-2">
+                  Contact Info
+                </label>
+                <input
+                  className="form-input w-full border border-gray-300 rounded-lg py-2 px-3 transition-colors duration-300 focus:outline-none focus:border-blue-500 hover:border-blue-400"
+                  id="econtactInfo"
+                  name="econtactInfo"
+                  value={form.econtactInfo}
+                  onChange={onChange}
+                ></input>
+              </div>
+              <div className="w-full text-left m-3 ">
+                <label htmlFor="eadditionalResources" className="mb-2 ">
+                  Additional Resources
+                </label>
+                <input
+                  className="form-input w-full border border-gray-300 rounded-lg py-2 px-3 transition-colors duration-300 focus:outline-none focus:border-blue-500 hover:border-blue-400"
+                  id="eadditionalResources"
+                  name="eadditionalResources"
+                  value={form.eadditionalResources}
+                  onChange={onChange}
+                ></input>
+              </div>
+              <div className="w-full text-left  m-3">
+                <label htmlFor="eimage" className="mb-1 mt-2">
+                  Image Link
+                </label>
+                <input
+                  type="text"
+                  className="form-input w-full border border-gray-300 rounded-lg py-2 px-3 transition-colors duration-300 focus:outline-none focus:border-blue-500 hover:border-blue-400"
+                  id="eimage"
+                  name="eimage"
+                  value={form.eimage}
+                  onChange={onChange}
+                />
+              </div>
+            </form>
+
             <div className="modal-footer">
               <button
                 ref={refClose}
@@ -249,23 +253,26 @@ const Forms = (props) => {
         </div>
       </div>
 
-      <div className="row my-3">
-        <div className="container my-4 mx-4">
-          <strong>My Meetings</strong>
+      <div className="row mt-18">
+        <div className="flex items-start justify-center mt-12 pb-5">
+          <strong className="text-white text-4xl">My Meetings</strong>
         </div>
-        <div className="container mx-2">
+
+        <div className="grid grid-cols-3 gap-3 grid-flow-row">
           {forms.length === 0 && "No forms to display"}
+
+          {forms.map((form) => (
+            <FormItem
+              showAlert={props.showAlert}
+              key={form._id}
+              updateForm={updateForm}
+              form={form}
+              className="min-w-0"
+            />
+          ))}
         </div>
-        {forms.map((form) => (
-          <FormItem
-            showAlert={props.showAlert}
-            key={form._id}
-            updateForm={updateForm}
-            form={form}
-          />
-        ))}
       </div>
-    </>
+    </div>
   );
 };
 
