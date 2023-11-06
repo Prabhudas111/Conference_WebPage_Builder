@@ -93,7 +93,14 @@
     }
 
     .nav-link:hover {
-        background: rgba(255, 255, 255, 0.25);
+        background: rgb(255, 119, 119);
+            /* background: rgb(68, 65, 65); */
         backdrop-filter: blur(20px);
+        border-radius: 4px;
     }
+/* .nav-link:hover {
+
+        border-radius: 4px;
+        transition: all 0.2s ease-in-out;
+    } */
 }

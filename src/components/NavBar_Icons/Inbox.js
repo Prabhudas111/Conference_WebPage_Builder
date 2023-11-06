@@ -3,17 +3,23 @@
 import React, { useState, useContext, useEffect } from "react";
 import QueryContext from "../../context/queries/queryContext";
 import FormContext from "../../context/forms/formContext";
+import NavBar from "./NavBar";
 const Inbox = () => {
   const { queries, getQueries, editQuery, deleteQuery } =
     useContext(QueryContext);
   const { forms, getForms } = useContext(FormContext);
 
   const [editedQueries, setEditedQueries] = useState({});
+  const [val, setVal] = useState(0);
+
+  const handleval = () => {
+    setVal(1 - val);
+  };
 
   useEffect(() => {
     getQueries();
     getForms();
-  }, []);
+  }, [getForms, getQueries]);
 
   useEffect(() => {
     const updatedMeetings = queries.reduce((acc, query) => {
@@ -93,81 +99,87 @@ const Inbox = () => {
   };
 
   return (
-    <div className="container mt-2 bg-gradient-to-br from-blue-800 to-cyan-400">
-      <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-100 via-white-200 to-blue-100  mt-16 text-center pb-3">
-        Meetings
-      </h1>
+    <>
+      <NavBar />
+      <div className="container mt-2 bg-gradient-to-br from-blue-800 to-cyan-400">
+        <h1 className="text-transparent bg-clip-text bg-gradient-to-r from-blue-100 via-white-200 to-blue-100  mt-16 text-center pb-3">
+          Meetings
+        </h1>
 
-      {meetings.map((meeting) => (
-        <div
-          key={meeting.meeting_id}
-          className="card mb-4 grid grid-cols-1 min-w-90 "
-          style={{ width: "90%" }}
-        >
-          <div className="card-header bg-orange-500  p-4">
-            <h4 className="card-title text-white text-xl font-bold">
-              {meeting.meeting_title}
-            </h4>
-          </div>
+        {meetings.map((meeting) => (
+          <div
+            key={meeting.meeting_id}
+            className="card mb-4 grid grid-cols-1 min-w-90 "
+            style={{ width: "90%" }}
+          >
+            <div className="card-header bg-red-500  p-4">
+              <h4 className="card-title text-white text-xl font-bold">
+                {meeting.meeting_title}
+              </h4>
+            </div>
 
-          <div className="card-body ">
-            {meeting.queries.map((query) => (
-              <div
-                key={query._id}
-                className="mb-3 p-4 border border-gray-300 rounded-lg"
-              >
-                {editedQueries[query._id] ? (
-                  <>
-                    <input
-                      type="text"
-                      className="w-full py-2 px-3 border border-gray-300 rounded-lg mb-2 focus:outline-none focus:border-blue-500"
-                      name="question"
-                      value={editedQueries[query._id].question}
-                      onChange={(e) => onChange(e, query._id)}
-                    />
-                    <input
-                      className="w-full py-2 px-3 border border-gray-300 rounded-lg mb-2 focus:outline-none focus:border-blue-500"
-                      name="answer"
-                      value={editedQueries[query._id].answer}
-                      onChange={(e) => onChange(e, query._id)}
-                    />
-                    <button
-                      className="btn btn-primary mr-2"
-                      onClick={() => handleClick(query._id)}
-                    >
-                      Save
-                    </button>
-                    <button
-                      className="btn btn-secondary"
-                      onClick={() => handleCancelEdit(query._id)}
-                    >
-                      Cancel
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <h5>Question: {query.question}</h5>
-                    <p>Answer: {query.answer}</p>
-                    <button
-                      className="btn btn-info btn btn-primary bg-blue-800 hover:bg-blue-700 text-white"
-                      onClick={() => handleEdit(query._id)}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      className="btn btn-danger ml-2 mx-4"
-                      onClick={() => handleDelete(query._id)}
-                    >
-                      Delete
-                    </button>
-                  </>
-                )}
-              </div>
-            ))}
+            <div className="card-body  ">
+              <details onClick={handleval}>
+                <summary>{val === 0 ? "view" : "hide"} queries</summary>
+                {meeting.queries.map((query) => (
+                  <div
+                    key={query._id}
+                    className="mb-3 p-4 border border-blue-300 border-3 rounded-xl "
+                  >
+                    {editedQueries[query._id] ? (
+                      <>
+                        <input
+                          type="text"
+                          className="w-full py-2 px-3 border border-gray-300 rounded-lg mb-2 focus:outline-none focus:border-blue-500"
+                          name="question"
+                          value={editedQueries[query._id].question}
+                          onChange={(e) => onChange(e, query._id)}
+                        />
+                        <input
+                          className="w-full py-2 px-3 border border-gray-300 rounded-lg mb-2 focus:outline-none focus:border-blue-500"
+                          name="answer"
+                          value={editedQueries[query._id].answer}
+                          onChange={(e) => onChange(e, query._id)}
+                        />
+                        <button
+                          className="btn btn-primary mr-2"
+                          onClick={() => handleClick(query._id)}
+                        >
+                          Save
+                        </button>
+                        <button
+                          className="btn btn-secondary"
+                          onClick={() => handleCancelEdit(query._id)}
+                        >
+                          Cancel
+                        </button>
+                      </>
+                    ) : (
+                      <div className="">
+                        <h5 className="font-bold">{query.question}</h5>
+                        <p> {query.answer}</p>
+                        <button
+                          className="btn btn-info btn btn-primary bg-teal-500 hover:bg-green-700 text-white"
+                          onClick={() => handleEdit(query._id)}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          className="btn btn-danger ml-2 mx-4"
+                          onClick={() => handleDelete(query._id)}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </details>
+            </div>
           </div>
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    </>
   );
 };
 

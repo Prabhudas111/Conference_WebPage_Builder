@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import Signup from "./Signup";
 import LoginItem from "./LoginItem";
 import "./Login.css";
-
+import NavBar from "../NavBar_Icons/NavBar";
 const Login = (props) => {
   const [isSignUpActive, setIsSignUpActive] = useState(false);
-
+  
   const handleSignUpClick = () => {
     setIsSignUpActive(true);
   };
@@ -16,6 +16,7 @@ const Login = (props) => {
 
   return (
     <>
+      <NavBar />
       <div
         className={`container ${
           isSignUpActive ? "right-panel-active" : ""

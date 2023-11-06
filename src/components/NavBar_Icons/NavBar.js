@@ -21,7 +21,7 @@ const NavBar = () => {
       return (
         <Link
           className={`nav-link ${
-            location.pathname === "/formpage" ? "active" : ""
+            location.pathname === "/formpage" ? "active font-bold" : ""
           }`}
           to="/formpage"
         >
@@ -37,7 +37,7 @@ const NavBar = () => {
       return (
         <Link
           className={`nav-link ${
-            location.pathname === "/inbox" ? "active" : ""
+            location.pathname === "/inbox" ? "active font-bold" : ""
           }`}
           to="/inbox"
         >

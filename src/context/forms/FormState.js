@@ -24,6 +24,23 @@ const FormState = (props) => {
       console.log("problem occurred in getForms");
     }
   };
+  const getFormsall = async () => {
+    try {
+      const response = await fetch(`${host}/api/template/fetchallforms`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
+        },
+      });
+      const json = await response.json();
+      setForms(json);
+    } catch (err) {
+      // console.error(err);
+
+      console.log("problem occurred in getForms");
+    }
+  };
 
   // Add a form
 
@@ -142,7 +159,7 @@ const FormState = (props) => {
 
   return (
     <FormContext.Provider
-      value={{ forms, addForm, deleteForm, editForm, getForms }}
+      value={{ forms, addForm, deleteForm, editForm, getForms, getFormsall }}
     >
       {props.children}
     </FormContext.Provider>

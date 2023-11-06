@@ -1,131 +1,155 @@
-import "./Home.css";
 import React from "react";
 import ScrollToBottomButton from "./scrolling";
+import Template1 from "./conference-poster-template.jpg";
+import Template2 from "./Red-conference-posters-with-people.jpg";
+import HomeBack from "./home_background1.webp";
+import NavBar from "./NavBar";
+import template_1 from "./template_1.jpeg";
+import "./Home.css";
 import { Link } from "react-router-dom"; // Assuming you have a separate CSS
 const Home = () => {
   return (
     <div>
-      {/* matter */}
-
-      <div class="h-screen">
-        <div class="flex flex-col justify-center my-16">
-          <h1 class="text-center font-bold text-6xl md:text-8xl pt-20">
-            CONFERENCE WEBSITE
-          </h1>
-          <h1 class="text-center text-6xl md:text-8xl font-bold mt-5 md:m-5 text-blue-700">
-            Template Site{" "}
-          </h1>
-          <p class="py-8 md:py-2 text-center text-xl font-extrabold">
-            A simple Application to choose templates of your interest
-          </p>
-        </div>
-        <div>
-          <ScrollToBottomButton />
-        </div>
-      </div>
-
-      <div class=" block bg-white shadow-lg rounded-lg overflow-hidden flex items-center justify-center py-3 px-3 ">
-        <div class="px-4">
-          <img
-            class=" object-cover object-center h-600 "
-            src="https://d1csarkz8obe9u.cloudfront.net/posterpreviews/business-conference-design-template-770e36c220234c14dde2bed5561679e4_screen.jpg?ts=1598459240"
-            alt="avatar"
-          ></img>
-          <div class="flex items-center px-6 py-3 bg-gray-900">
-            <button class="mx-3 text-white font-bold italic text-lg">
-              <Link to="/templates">Go to Templates</Link>
-            </button>
+      <NavBar />
+      <div
+        className="h-screen relative"
+        style={{
+          background: `url(${HomeBack})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        <div
+          className="absolute top-0 left-0 w-full h-full"
+          style={{ backgroundColor: "rgba(0, 0, 0, 0.7)" }}
+        >
+          <div
+            className="flex flex-col justify-center my-16 z-10"
+            style={{ paddingTop: "120px" }}
+          >
+            <h1 className="text-center font-bold text-6xl md:text-8xl text-[#FFFFFF]">
+              CONFERENCE BUILDER
+            </h1>
+            <h1 className="text-center text-6xl md:text-8xl font-bold mt-5 md:m-5 text-teal-400">
+              Choose, Customize, Create
+            </h1>
+            <p className="py-8 md:py-2 text-center text-2xl font-extrabold text-[#4895EF]">
+              A simple Application to choose templates of your interest
+            </p>
           </div>
-        </div>
-        <div class="px-4 ">
-          <img
-            class=" object-cover object-center h-600"
-            src="https://www.templateupdates.com/wp-content/uploads/2018/05/Red-conference-posters-with-people.jpg"
-            alt="avatar"
-          ></img>
-          <div class="flex items-center px-6 py-3  bg-gray-900">
-            <button class="mx-3 text-white font-bold italic text-lg">
-              <Link to="/templates">Go to Templates</Link>
-            </button>
-          </div>
-        </div>
 
-        <div class="px-4 ">
-          <img
-            class=" object-cover object-center h-600"
-            src="https://freedesignfile.com/upload/2019/09/Woman-Conference-PSD-Poster-Templates.jpg"
-            alt="avatar"
-          ></img>
-          <div class="flex items-center px-6 py-3  bg-gray-900">
-            <button class="mx-3 text-white font-bold italic">
-              <Link to="/templates">Go to Templates</Link>
-            </button>
-          </div>
-        </div>
-
-        <div class="px-4 ">
-          <img
-            class=" object-cover object-center h-600"
-            src="https://way2barak.com/wp-content/uploads/2019/11/NIT-Silchar.jpg"
-            alt="avatar"
-          ></img>
-          <div class="flex items-center px-6 py-3  bg-gray-900">
-            <button class="mx-3 text-white font-bold italic">
-              <Link to="/templates">Go to Templates</Link>
-            </button>
+          <div></div>
+          <div>
+            <ScrollToBottomButton />
           </div>
         </div>
       </div>
+      <div className="bg-gray-800 shadow-lg overflow-hidden flex items-center justify-center py-3 px-3">
+        <div className="px-4 hover-animation">
+          <div className="image-container">
+            <img className="custom-image" src={Template1} alt="Template1" />
+          </div>
+          <div className="flex items-center font-semibold hover:bg-yellow-300 border-b hover-animation2">
+            <Link
+              to={localStorage.getItem("token") ? "/formpage" : "/login"}
+              className="mx-3 text-white font-bold italic"
+            >
+              Select This
+            </Link>
+          </div>
+        </div>
+        <div className="px-4 hover-animation">
+          <div className="image-container">
+            <img className="custom-image" src={template_1} alt="Template2" />
+          </div>
+          <div className="flex items-center font-semibold text-sm hover:bg-red-500 border-b hover-animation2 ">
+            <Link
+              to={localStorage.getItem("token") ? "/formpage" : "/login"}
+              className="mx-3 text-white font-bold italic"
+            >
+              Select This
+            </Link>
+          </div>
+        </div>
 
-      <section class="bg-white">
-        <div class="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
-          <nav class="flex flex-wrap justify-center -mx-5 -my-2">
-            <div class="px-5 py-2">
+        <div className="px-4 hover-animation">
+          <div className="image-container">
+            <img className="custom-image" src={Template2} alt="Template1" />
+          </div>
+          <div className="flex items-center font-semibold hover:bg-red-500 border-b hover-animation2">
+            <Link
+              to={localStorage.getItem("token") ? "/formpage" : "/login"}
+              className="mx-3 text-white font-bold italic"
+            >
+              Select This
+            </Link>
+          </div>
+        </div>
+        <div className="px-4 hover-animation ">
+          <div className="image-container">
+            <img className="custom-image" src={Template1} alt="Template2" />
+          </div>
+          <div className="flex items-center font-semibold text-sm hover:bg-yellow-300 border-b hover-animation2 ">
+            <Link
+              to={localStorage.getItem("token") ? "/formpage" : "/login"}
+              className="mx-3 text-white font-bold italic"
+            >
+              Select This
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      <section className="bg-gray-800">
+        <div className="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+          <nav className="flex flex-wrap justify-center -mx-5 -my-2">
+            <div className="px-5 py-2">
               <a
                 href="/"
-                class="text-base leading-6 text-gray-500 hover:text-gray-900"
+                className="text-base leading-6 text-gray-500 hover:text-red-600"
               >
                 About
               </a>
             </div>
-            <div class="px-5 py-2">
+            <div className="px-5 py-2">
               <a
                 href="/"
-                class="text-base leading-6 text-gray-500 hover:text-gray-900"
+                className="text-base leading-6 text-gray-500 hover:text-red-600"
               >
                 Blog
               </a>
             </div>
-            <div class="px-5 py-2">
+            <div className="px-5 py-2">
               <a
                 href="/"
-                class="text-base leading-6 text-gray-500 hover:text-gray-900"
+                className="text-base leading-6 text-gray-500 hover:text-red-600"
               >
                 Team
               </a>
             </div>
-            <div class="px-5 py-2">
+            <div className="px-5 py-2">
               <a
                 href="/"
-                class="text-base leading-6 text-gray-500 hover:text-gray-900"
+                className="text-base leading-6 text-gray-500 hover:text-red-600"
               >
                 Contact
               </a>
             </div>
-            <div class="px-5 py-2">
+            <div className="px-5 py-2">
               <a
                 href="/"
-                class="text-base leading-6 text-gray-500 hover:text-gray-900"
+                className="text-base leading-6 text-gray-500 hover:text-red-600"
               >
                 Terms
               </a>
             </div>
           </nav>
-          <div class="flex justify-center mt-8 space-x-6">
-            <a href="/" class="text-gray-400 hover:text-gray-500">
-              <span class="sr-only">Facebook</span>
+          <div className="flex justify-center mt-8 space-x-6">
+            <a href="/" className="text-gray-400 hover:text-blue-500">
+              <span className="sr-only">Facebook</span>
               <svg
-                class="w-6 h-6"
+                className="w-6 h-6"
                 aria-hidden="true"
                 fill="currentColor"
                 viewBox="0 0 24 24"
@@ -137,10 +161,10 @@ const Home = () => {
                 ></path>
               </svg>
             </a>
-            <a href="/" class="text-gray-400 hover:text-gray-500">
-              <span class="sr-only">Instagram</span>
+            <a href="/" className="text-gray-400 hover:text-pink-500">
+              <span className="sr-only">Instagram</span>
               <svg
-                class="w-6 h-6"
+                className="w-6 h-6"
                 aria-hidden="true"
                 fill="currentColor"
                 viewBox="0 0 24 24"
@@ -152,10 +176,10 @@ const Home = () => {
                 ></path>
               </svg>
             </a>
-            <a href="/" class="text-gray-400 hover:text-gray-500">
-              <span class="sr-only">Twitter</span>
+            <a href="/" className="text-gray-400 hover:text-blue-500">
+              <span className="sr-only">Twitter</span>
               <svg
-                class="w-6 h-6"
+                className="w-6 h-6"
                 aria-hidden="true"
                 fill="currentColor"
                 viewBox="0 0 24 24"
@@ -163,10 +187,10 @@ const Home = () => {
                 <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
               </svg>
             </a>
-            <a href="/" class="text-gray-400 hover:text-gray-500">
-              <span class="sr-only">GitHub</span>
+            <a href="/" className="text-gray-400 hover:text-black">
+              <span className="sr-only">GitHub</span>
               <svg
-                class="w-6 h-6"
+                className="w-6 h-6"
                 aria-hidden="true"
                 fill="currentColor"
                 viewBox="0 0 24 24"
@@ -178,10 +202,10 @@ const Home = () => {
                 ></path>
               </svg>
             </a>
-            <a href="/" class="text-gray-400 hover:text-gray-500">
-              <span class="sr-only">Dribbble</span>
+            <a href="/" className="text-gray-400 hover:text-pink-500">
+              <span className="sr-only">Dribbble</span>
               <svg
-                class="w-6 h-6"
+                className="w-6 h-6"
                 aria-hidden="true"
                 fill="currentColor"
                 viewBox="0 0 24 24"
@@ -194,7 +218,7 @@ const Home = () => {
               </svg>
             </a>
           </div>
-          <p class="mt-8 text-base leading-6 text-center text-gray-400">
+          <p className="mt-8 text-base leading-6 text-center text-gray-400 hover:text-red-600">
             © 2023 NIT SILCHAR. All rights reserved.
           </p>
         </div>

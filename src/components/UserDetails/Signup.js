@@ -18,32 +18,47 @@ const Signup = (props) => {
 
     if (password !== cpassword) {
       // Passwords don't match, handle the error
-      props.showAlert("password do not match", "danger");
+      props.showAlert("Passwords do not match", "danger");
       return;
     }
 
-    const response = await fetch("http://localhost:5000/api/auth/createuser", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name,
-        email,
-        password,
-      }),
-    });
+    try {
+      const response = await fetch(
+        "http://localhost:5000/api/auth/createuser",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            password,
+          }),
+        }
+      );
 
-    const json = await response.json();
-    console.log(json);
+      if (!response.ok) {
+        // Handle non-successful response
+        const errorMessage = await response.text();
+        throw new Error(
+          `Request failed with status ${response.status}: ${errorMessage}`
+        );
+      }
 
-    // if (json.success) {
-    localStorage.setItem("token", json.authToken);
-    navigate("/formpage");
-    props.showAlert("Account created successfully", "success");
-    // } else {
-    // props.showAlert("Invalid Details", "danger");
-    // }
+      const json = await response.json();
+      console.log(json);
+
+      localStorage.setItem("token", json.authToken);
+      navigate("/formpage");
+      props.showAlert("Account created successfully", "success");
+    } catch (error) {
+      console.log(error);
+      props.showAlert(
+        "Failed to create account. Please try again later.",
+        "danger"
+      );
+    }
   };
 
   const onChange = (val) => {

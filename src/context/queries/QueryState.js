@@ -7,7 +7,43 @@ const QueryState = (props) => {
   const [queries, setQueries] = useState([]);
 
   // Get all queries
+  // const getallQueries = async (meetingId) => {
+  //   try {
+  //     const response = await fetch(`${host}/api/template/fetchallqueries`, {
+  //       method: "GET",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         "auth-token": localStorage.getItem("token"),
+  //       },
+  //     });
 
+  //     const json = await response.json();
+  //     console.log("jso get", json);
+  //     setQueries(json);
+  //   } catch (err) {
+  //     console.log("problem occurred in getQueries", err.message);
+  //   }
+  // };
+
+  // // Add a query
+  // const addallQuery = async (question, answer, meeting_id, meeting_title) => {
+  //   try {
+  //     const response = await fetch(`${host}/api/template/addquery`, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         "auth-token": localStorage.getItem("token"),
+  //       },
+  //       body: JSON.stringify(question, answer, meeting_id, meeting_title),
+  //     });
+  //     const responseData = await response.json();
+  //     setQueries([...queries, responseData]);
+
+  //     console.log("successfully,added :", queries);
+  //   } catch (err) {
+  //     console.log("problem occurred in addQuery", err.message);
+  //   }
+  // };
   const getQueries = async (meetingId) => {
     try {
       const response = await fetch(`${host}/api/queries/fetchallqueries`, {
@@ -98,11 +134,15 @@ const QueryState = (props) => {
     }
   };
 
-
-
   return (
     <QueryContext.Provider
-      value={{ queries, addQuery, deleteQuery, editQuery, getQueries }}
+      value={{
+        queries,
+        addQuery,
+        deleteQuery,
+        editQuery,
+        getQueries,
+      }}
     >
       {props.children}
     </QueryContext.Provider>

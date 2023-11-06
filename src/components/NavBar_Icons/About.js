@@ -1,8 +1,9 @@
 import React from "react";
-
+import NavBar from "./NavBar";
 const About = () => {
   return (
     <>
+     <NavBar />
       <div class="bg-gradient-to-r  min-h-screen flex items-center justify-center">
         <div class="   p-8 rounded-lg">
           <h1 class="text-4xl font-bold text-center">This is About</h1>
